@@ -16,3 +16,4 @@ app.autodiscover_tasks()
 def debug_task():
     time.sleep(20)
     print("Hello world I'm debug task")
+

@@ -41,3 +41,18 @@ services:
       - reddis
     depends_on:
       - reddis
+
+  flower:
+    build:
+      context: .
+    hostname: flower
+    entrypoint: celery
+    command: -A celery_app.app flower
+    volumes:
+      - ./service:/service
+    links:
+      - reddis
+    depends_on:
+      - reddis
+    ports:
+      - "5555:5555"
