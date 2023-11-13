@@ -63,7 +63,15 @@ class Subscription(models.Model):
     service = models.ForeignKey(Service, related_name='subscriptions', on_delete=models.PROTECT)
     plan = models.ForeignKey(Plan, related_name='subscriptions', on_delete=models.PROTECT)
     price = models.PositiveIntegerField(default=0)
-    data_modified = models.CharField(max_length=30, default="")
+    data_modified = models.CharField(max_length=30, default="", db_index=True)
+
+    # field_a = models.CharField(max_length=50, default='')
+    # field_b = models.CharField(max_length=50, default='')
+    #
+    # class Meta:
+    #     indexes = [
+    #         models.Index(fields=['field_a', 'field_b'])
+    #     ]
 
     def __str__(self):
         return f"Client: {self.client} service: {self.service} "
